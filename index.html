@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href=
+  "/static/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href=
+  "/static/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href=
+  "/static/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href=
+  "/static/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href=
+  "/static/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href=
+  "/static/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href=
+  "/static/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href=
+  "/static/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href=
+  "/static/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href=
+  "/static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href=
+  "/static/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href=
+  "/static/favicon-16x16.png">
+  <link rel="stylesheet" href="/dist/fan_page/styles.css">
+  <script>
+  function isIgnorable(error) {
+  var ignorableStrings = [
+    '__reactInternalInstance$',
+    'honey._native.tabs',
+    'vid_mate_check is not defined',
+    'Illegal invocation',
+    'invariant=96&args[]=toggle',
+  ];
+  for (var i = ignorableStrings.length; i; i -= 1) {
+    if (error && error.indexOf && error.indexOf(ignorableStrings[i]) > -1) {
+      return true;
+    }
+  }
+  return false;
+  }
+  var _rollbarConfig = {
+  accessToken: "9e1da6e6ea1d422d8e7741f78309a5db",
+  addErrorContext: true,
+  async: true,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  enabled: true,
+  payload: {
+    environment: "prod",
+    client: {
+      javascript: {
+        source_map_enabled: true,
+        code_version: "940d44f6adb03e17a8bfabd778ae0c1251c48cf4"
+      }
+    }
+  },
+  checkIgnore: function(isUncaught, args, payload) {
+    if (args.length && isIgnorable(args[0])) {
+      return true;
+    }
+    if (payload && payload.request && payload.request.url === 'https://unitedmasters.com/unsupported') {
+      return true;
+    }
+    if (
+      payload && payload.body && payload.body.trace
+      && payload.body.trace.exception.class == "(unknown)"
+      && payload.body.trace.exception.description === "Script error."
+      && payload.body.trace.frames[0].method == "[anonymous]"
+    ) {
+      return true;
+    }
+    return false;
+  }
+  };
+  /* Rollbar Snippet */
+  !function(r){function o(n){if(e[n])return e[n].exports;var t=e[n]={exports:{},id:n,loaded:!1};return r[n].call(t.exports,t,t.exports,o),t.loaded=!0,t.exports}var e={};return o.m=r,o.c=e,o.p="",o(0)}([function(r,o,e){"use strict";var n=e(1),t=e(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.18.0/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,o,e){"use strict";function n(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}function t(r,o){this.options=r,this._rollbarOldOnError=null;var e=s++;this.shimId=function(){return e},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[e]={handler:o,messages:[]})}function a(r,o){if(r){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShims={},r._rollbarWrappedError=null;var t=new p(o);return n(function(){o.captureUncaught&&(t._rollbarOldOnError=r.onerror,i.captureUncaughtExceptions(r,t,!0),i.wrapGlobals(r,t,!0)),o.captureUnhandledRejections&&i.captureUnhandledRejections(r,t,!0);var n=o.autoInstrument;return o.enabled!==!1&&(void 0===n||n===!0||"object"==typeof n&&n.network)&&r.addEventListener&&(r.addEventListener("load",t.captureLoad.bind(t)),r.addEventListener("DOMContentLoaded",t.captureDomContentLoaded.bind(t))),r[e]=t,t})()}}function l(r){return n(function(){var o=this,e=Array.prototype.slice.call(arguments,0),n={shim:o,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)})}var i=e(2),s=0,d=e(3),c=function(r,o){return new t(r,o)},p=function(r){return new d(c,r)};t.prototype.loadFull=function(r,o,e,t,a){var l=function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var e,n,t,l,i=0;e=r._rollbarShims[i++];)for(e=e.messages||[];n=e.shift();)for(t=n.args||[],i=0;i<t.length;++i)if(l=t[i],"function"==typeof l){l(o);break}}"function"==typeof a&&a(o)},i=!1,s=o.createElement("script"),d=o.getElementsByTagName("script")[0],c=d.parentNode;s.crossOrigin="",s.src=t.rollbarJsUrl,e||(s.async=!0),s.onload=s.onreadystatechange=n(function(){if(!(i||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{c.removeChild(s)}catch(r){}i=!0,l()}}),c.insertBefore(s,d)},t.prototype.wrap=function(r,o,e){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){e&&"function"==typeof e&&e.apply(this,arguments);try{return r.apply(this,arguments)}catch(e){var o=e;throw o&&("string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o),o}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)t.prototype[u[f]]=l(u[f]);r.exports={setupShim:a,Rollbar:p}},function(r,o){"use strict";function e(r,o,e){if(r){var t;if("function"==typeof o._rollbarOldOnError)t=o._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;o._rollbarOldOnError=t}var a=function(){var e=Array.prototype.slice.call(arguments,0);n(r,o,t,e)};e&&(a._rollbarOldOnError=t),r.onerror=a}}function n(r,o,e,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),o.handleUncaughtException.apply(o,n),e&&e.apply(r,n)}function t(r,o,e){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var e,n,t;try{e=r.reason}catch(r){e=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!e&&t&&(e=t.reason,n=t.promise)}catch(r){}e||(e="[unhandledrejection] error getting `reason` from event"),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(e,n)};n.belongsToShim=e,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}function a(r,o,e){if(r){var n,t,a="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(n=0;n<a.length;++n)t=a[n],r[t]&&r[t].prototype&&l(o,r[t].prototype,e)}}function l(r,o,e){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var n=o.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(o,e,t){n.call(this,o,r.wrap(e),t)};t._rollbarOldAdd=n,t.belongsToShim=e,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,e){a.call(this,r,o&&o._rollbar_wrapped||o,e)};l._rollbarOldRemove=a,l.belongsToShim=e,o.removeEventListener=l}}r.exports={captureUncaughtExceptions:e,captureUnhandledRejections:t,wrapGlobals:a}},function(r,o){"use strict";function e(r,o){this.impl=r(o,this),this.options=o,n(e.prototype)}function n(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},e="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<e.length;n++)r[e[n]]=o(e[n])}e.prototype._swapAndProcessMessages=function(r,o){this.impl=r(this.options);for(var e,n,t;e=o.shift();)n=e.method,t=e.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],e.ts]):this[n].apply(this,t));return this},r.exports=e},function(r,o){"use strict";r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){r=r||{};for(var e,n,t=r.globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;e=window._rollbarShims[i++];)n||(n=e.handler),e.handler._swapAndProcessMessages(l,e.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);
+  /* End Rollbar Snippet */
+  </script>
+  <script>
+      window._ajs_persistent_props = {"project": "fan_page", "code_version": "940d44f6adb03e17a8bfabd778ae0c1251c48cf4"};
+  </script>
+  <script src=
+  "/analytics/snippet?key=untd-music&artist_id=aHx5LQTZUGdz&type=fan"></script>
+  <title>Taekasid | Official Website, Listen, Merch, Tours</title>
+  <meta name="description" content="">
+  <meta property="og:url" content=
+  "https://unitedmasters.com/a/taekasid">
+  <meta property="twitter:url" content=
+  "https://unitedmasters.com/a/taekasid">
+  <meta property="og:title" content=
+  "Taekasid | Official Website, Listen, Merch, Tours">
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:title" content=
+  "Taekasid | Official Website, Listen, Merch, Tours">
+  <meta property="twitter:image" content=
+  "https://united-masters.imgix.net/mfTuUTRvCdFu">
+  <meta property="twitter:description" content="">
+  <meta property="og:image" content=
+  "https://united-masters.imgix.net/mfTuUTRvCdFu">
+  <meta property="og:description" content="">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src=
+  "https://www.googletagmanager.com/ns.html?id=GTM-K8WJLFV" height=
+  "0" width="0" style=
+  "display:none;visibility:hidden"></iframe></noscript> 
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="app"></div>
+  <div id="app-error"></div>
+  <div id="flash"></div>
+  <div id="impersonation-warning"></div>
+  <script src="/dist/public/vendor/bundle.js"></script> 
+  <script src=
+  "https://polyfill.io/v3/polyfill.min.js?features=default%2Cfetch%2CIntersectionObserver%2CIntersectionObserverEntry%2CSymbol.iterator%2CSymbol%2CArray.prototype.find%2CObject.fromEntries"></script>
+  
+  <script src="/dist/public/fan_page/bundle.js"></script> 
+  <script>
+  var globals=function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist/",n(n.s=926)}({0:function(e,t,n){e.exports=n(68)(2)},11:function(e,t,n){var r=n(149),o=n(150);e.exports=function(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?o(e):t}},148:function(e,t){function n(t,r){return e.exports=n=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},n(t,r)}e.exports=n},149:function(e,t){function n(t){return"function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?e.exports=n=function(e){return typeof e}:e.exports=n=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},n(t)}e.exports=n},15:function(e,t,n){e.exports=n(151)()},150:function(e,t){e.exports=function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}},151:function(e,t,n){"use strict";var r=n(152);function o(){}function i(){}i.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,i,c){if(c!==r){var u=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw u.name="Invariant Violation",u}}function t(){return e}e.isRequired=e;var n={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:i,resetWarningCache:o};return n.PropTypes=n,n}},152:function(e,t,n){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},5:function(e,t){function n(t){return e.exports=n=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},n(t)}e.exports=n},52:function(e,t,n){e.exports=n(68)(9)},6:function(e,t){e.exports=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}},650:function(e,t){function n(){var e="/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/types/Viewer.js",t=new Function("return this")(),r="__coverage__",o=t[r]||(t[r]={});o[e]&&"ff74340c1cdff96b73667fb3c1b447dc8624f4ed"===o[e].hash||(o[e]={path:"/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/types/Viewer.js",statementMap:{},fnMap:{},branchMap:{},s:{},f:{},b:{},_coverageSchema:"1a1c01bbd47fc00a2c39e90264f33305004495a9",hash:"ff74340c1cdff96b73667fb3c1b447dc8624f4ed"});var i=o[e];return n=function(){return i},i}n()},68:function(e,t){e.exports=public_vendor_lib},7:function(e,t){function n(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}e.exports=function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}},9:function(e,t,n){var r=n(148);e.exports=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&r(e,t)}},926:function(e,t,n){"use strict";n.r(t),n.d(t,"React",(function(){return o.a})),n.d(t,"ReactDOM",(function(){return c.a})),n.d(t,"ViewerContext",(function(){return k}));var r=n(0),o=n.n(r),i=n(52),c=n.n(i),u=n(6),a=n.n(u),f=n(7),l=n.n(f),s=n(9),p=n.n(s),b=n(11),d=n.n(b),y=n(5),m=n.n(y),v=(n(650),n(15)),h=n.n(v);function _(){var e="/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/ViewerContext.js",t=new Function("return this")(),n="__coverage__",r=t[n]||(t[n]={});r[e]&&"f6d1fd5a77c592058c93e05571ef8f09a3e9a4d7"===r[e].hash||(r[e]={path:"/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/ViewerContext.js",statementMap:{0:{start:{line:14,column:4},end:{line:16,column:6}},1:{start:{line:20,column:4},end:{line:20,column:31}},2:{start:{line:23,column:29},end:{line:25,column:3}}},fnMap:{0:{name:"(anonymous_0)",decl:{start:{line:13,column:2},end:{line:13,column:3}},loc:{start:{line:13,column:28},end:{line:17,column:3}},line:13},1:{name:"(anonymous_1)",decl:{start:{line:19,column:2},end:{line:19,column:3}},loc:{start:{line:19,column:11},end:{line:21,column:3}},line:19}},branchMap:{},s:{0:0,1:0,2:0},f:{0:0,1:0},b:{},_coverageSchema:"1a1c01bbd47fc00a2c39e90264f33305004495a9",hash:"f6d1fd5a77c592058c93e05571ef8f09a3e9a4d7"});var o=r[e];return _=function(){return o},o}function g(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=m()(e);if(t){var o=m()(this).constructor;n=Reflect.construct(r,arguments,o)}else n=r.apply(this,arguments);return d()(this,n)}}_();var k=function(e){p()(n,e);var t=g(n);function n(){return a()(this,n),t.apply(this,arguments)}return l()(n,[{key:"getChildContext",value:function(){return _().f[0]++,_().s[0]++,{viewer:this.props.viewer}}},{key:"render",value:function(){return _().f[1]++,_().s[1]++,this.props.children}}]),n}(r.Component);function x(){var e="/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/globalsPublic.js",t=new Function("return this")(),n="__coverage__",r=t[n]||(t[n]={});r[e]&&"c7d4edcd7e4fcff3462819da321d428dd6a94729"===r[e].hash||(r[e]={path:"/var/lib/buildkite-agent/builds/buildkite-stack-default-v2-i-0fa812c07b80fdc9f-1/tommyboy/buildkite-t3-pipeline/lib/globalsPublic.js",statementMap:{},fnMap:{},branchMap:{},s:{},f:{},b:{},_coverageSchema:"1a1c01bbd47fc00a2c39e90264f33305004495a9",hash:"c7d4edcd7e4fcff3462819da321d428dd6a94729"});var o=r[e];return x=function(){return o},o}k.childContextTypes=(_().s[2]++,{viewer:h.a.object}),x()}});
+  </script> 
+  <script>
+
+      try {
+        if (
+          typeof public_vendor_lib === 'undefined' ||
+          typeof globals === 'undefined' ||
+          typeof fan_page === 'undefined'
+        ) {
+          var err = ("Missing critical global - " +
+            "public_vendor_lib: " + (typeof vendor_lib) + ", " +
+            "globals: " + (typeof globals) + ", " +
+            "project: " + (typeof fan_page)
+          );
+          throw new TypeError(err);
+        }
+        globals.ReactDOM.render(
+          globals.React.createElement(
+            globals.ViewerContext,
+            {viewer: {
+  "firebase_config": {
+    "api_key": "AIzaSyCSHh1f-ukN3t7jkwSe6K_5UsjTNt5WCfA",
+    "sender_id": "191301842497",
+    "app_id": "1:191301842497:web:ce1fa5c46dfd19d7",
+    "measurement_id": "G-LZD1G0FEWX",
+    "hash_key_b64": "JmlGjaIG0MI84q2Ll6dfDIb094Q8GBRBMM1PNFBW+1caLiFBiChlD8HYAJvFlut+WEu9JgOFuD6MG68IGTPF8Q==",
+    "project_id": "um-prod"
+  },
+  "name": "",
+  "is_authenticated": false,
+  "id": null,
+  "feature_flags": {
+    "isProducerOnboardingMembershipUpgradeEnabled": false
+  },
+  "avatar": "",
+  "graphql_uri": [
+    "/api/proxy/graphql"
+  ],
+  "email": "",
+  "device_id": null
+  }},
+            globals.React.createElement(
+              fan_page.ArtistPageApp,
+                {
+  "loggedInArtist": null,
+  "artistImgAssetId": "mfTuUTRvCdFu",
+  "artist": {
+    "_time_removed": null,
+    "_time_updated": "2021-10-06T04:13:17.000000",
+    "genres": [
+      "hip_hop_rap"
+    ],
+    "verified_name": null,
+    "tags": null,
+    "class": "Artist",
+    "registered_at": null,
+    "analytics_config": null,
+    "_time_created": "2021-07-08T01:08:23.000000",
+    "profile": {
+      "name": "Taekasid"
+    },
+    "id": "aHx5LQTZUGdz",
+    "_id": null,
+    "slug": null
+  },
+  "viewer": {
+    "name": "",
+    "is_authenticated": false,
+    "id": null,
+    "avatar": "",
+    "email": "",
+    "device_id": null
+  },
+  "fanPage": {
+    "_time_removed": null,
+    "module_order": [
+      "GrwMKE",
+      "DLxgWK",
+      "DGFPDp",
+      "GzzGUB"
+    ],
+    "url_handle": "taekasid3714",
+    "_time_updated": "2021-10-18T14:37:46.608000",
+    "_time_created": "2021-10-02T11:25:38.623000",
+    "thank_you_text": "  ",
+    "theme": "dark",
+    "connect_text": "  ",
+    "artist_id": "aHx5LQTZUGdz",
+    "_id": "615841b2a04fc3920cdfa743",
+    "background_asset_id": "mBGHv9c5snPL",
+    "slug": {
+      "_time_removed": null,
+      "_time_updated": "2021-10-03T20:01:08.369000",
+      "id": "615a0c0486f5484e3e9fcc6f",
+      "_time_created": "2021-10-03T20:01:08.369000",
+      "path_prefix": "/a/",
+      "artist_id": "aHx5LQTZUGdz",
+      "_id": "615a0c0486f5484e3e9fcc6f",
+      "slug": "taekasid"
+    }
+  },
+  "masterlinks": [
+    {
+      "_time_removed": null,
+      "image_asset_id": "mtGsmX8YAQHB",
+      "slug": {
+        "_time_removed": null,
+        "_time_updated": "2021-10-18T11:27:18.245000",
+        "id": "616d5a166b55ac762b09e0fe",
+        "_time_created": "2021-10-18T11:27:18.245000",
+        "path_prefix": "/m/",
+        "_id": "616d5a166b55ac762b09e0fe",
+        "doc_id": "616d5a166b55ac762b09e0fd",
+        "slug": "616d5a166b55ac762b09e0fd"
+      },
+      "release_id": null,
+      "links": {
+        "spotify": "https://open.spotify.com/artist/2N5DpIrkHGkwc6MEhp1DsD?si=-kLYfE1rRj2Z7YxdGHo20Q&utm_source=copy-link&dl_branch=1",
+        "amazon_music": "https://music.amazon.com.au/artists/B098LNTKVN?ref=dm_sh_cjQb3WaTNA2QoKPmHM4lOmbIM",
+        "apple": "https://music.apple.com/us/artist/taekasid/1575138012",
+        "soundcloud": "https://soundcloud.com/taekasid",
+        "tidal": "https://tidal.com/au/artist/26683583"
+      },
+      "title": "Crystal Horse",
+      "release_is_live": true,
+      "release_date": null,
+      "artist_name": "Taekasid",
+      "order": null,
+      "_time_created": "2021-10-18T11:27:18.240000",
+      "_time_updated": "2021-10-18T11:28:50.535000",
+      "artist_id": "aHx5LQTZUGdz",
+      "_id": "616d5a166b55ac762b09e0fd",
+      "type": "custom",
+      "id": "616d5a166b55ac762b09e0fd"
+    }
+  ],
+  "intercom_app_id": "xv88nbv6"
+  }
+            )
+          ),
+          document.getElementById('app')
+        );
+      } catch(e) {
+        console.error(e);
+        document.getElementById('app-error').innerHTML = 'Failed to load application.';
+        document.getElementById('app-error').style.display = 'block';
+        Rollbar.error("Error loading React app", e);
+      }
+  </script>
+</body>
+</html>
